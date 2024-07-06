@@ -18,10 +18,9 @@ public class UserDaoImpl implements UserDao {
     @Override
     public String login(UserEntity entity) throws Exception {
         ResultSet rest = CrudUtil.executeQuary("SELECT password FROM user WHERE username = ?", entity.getUsername());
-        String result = "fail";
+        String result = "Incorrect Username or Password. Try Again!";
         if (rest.next()) {
             if (rest.getString("password").equals(entity.getPassword())) {
-                System.out.println("working");
                 result = "Success";
             }
         }

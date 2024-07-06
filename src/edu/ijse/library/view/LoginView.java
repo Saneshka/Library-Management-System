@@ -164,12 +164,17 @@ public class LoginView extends javax.swing.JFrame {
             String resp = USER_CONTROLLER.login(dto);
             JOptionPane.showMessageDialog(this, resp);
             if (resp.equals("Success")) {
-                new MemberView().setVisible(true);
+                new MainMenuView().setVisible(true);
                 this.setVisible(false);
             }
+            Clear();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
         
+    }
+    public void Clear(){
+        txtUserName.setText("");
+        txtPassword.setText("");
     }
 }
