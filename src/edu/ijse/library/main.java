@@ -4,6 +4,8 @@
  */
 package edu.ijse.library;
 
+import edu.ijse.library.view.LoginView;
+
 /**
  *
  * @author hirus
@@ -15,6 +17,7 @@ public class main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new LoginView().setVisible(true);
     }
     
 }
