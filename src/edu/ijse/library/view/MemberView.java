@@ -4,19 +4,25 @@
  */
 package edu.ijse.library.view;
 
+import edu.ijse.library.controller.MemberController;
 import edu.ijse.library.dto.MemberDTO;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
  * @author hirus
  */
 public class MemberView extends javax.swing.JFrame {
+    
+    private final MemberController MEMBER_CONTROLLER;
 
     /**
      * Creates new form MemberView
      */
     public MemberView() {
         initComponents();
+        MEMBER_CONTROLLER = new MemberController();
     }
 
     /**
@@ -47,6 +53,7 @@ public class MemberView extends javax.swing.JFrame {
         tblMember = new javax.swing.JTable();
         lblMemberCode = new javax.swing.JLabel();
         txtMemberCode = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -153,6 +160,13 @@ public class MemberView extends javax.swing.JFrame {
             }
         });
 
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -185,6 +199,8 @@ public class MemberView extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSearch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnUpdate)
@@ -216,7 +232,8 @@ public class MemberView extends javax.swing.JFrame {
                             .addComponent(btnSave)
                             .addComponent(btnUpdate)
                             .addComponent(btnDelete)
-                            .addComponent(btnClear)))
+                            .addComponent(btnClear)
+                            .addComponent(btnSearch)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPhoneNo)
@@ -264,10 +281,12 @@ public class MemberView extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        updateMember();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        deleteMember();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -277,6 +296,11 @@ public class MemberView extends javax.swing.JFrame {
     private void txtMemberCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberCodeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMemberCodeActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        searchMember();
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -317,6 +341,7 @@ public class MemberView extends javax.swing.JFrame {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -338,6 +363,41 @@ public class MemberView extends javax.swing.JFrame {
     public void saveMember(){
         try {
             MemberDTO dto = new MemberDTO(txtMemberCode.getText(), txtFirstName.getText(), txtLastName.getText(), txtPhoneNo.getText(), txtAddress.getText());
+            String resp = MEMBER_CONTROLLER.save(dto);
+            JOptionPane.showMessageDialog(this, resp);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
+    
+    public void updateMember(){
+        try {
+            MemberDTO dto = new MemberDTO(txtMemberCode.getText(), txtFirstName.getText(), txtLastName.getText(), txtPhoneNo.getText(), txtAddress.getText());
+            String resp = MEMBER_CONTROLLER.update(dto);
+            JOptionPane.showMessageDialog(this, resp);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
+    
+    public void deleteMember(){
+        try {
+            String code = txtMemberCode.getText();
+            String resp = MEMBER_CONTROLLER.delete(code);
+            JOptionPane.showMessageDialog(this, resp);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
+    
+    public void searchMember(){
+        try {
+            String code = txtMemberCode.getText();
+            MemberDTO dto = MEMBER_CONTROLLER.get(code);
+            txtFirstName.setText(dto.getFirstName());
+            txtLastName.setText(dto.getLastName());
+            txtPhoneNo.setText(dto.getPhoneNo());
+            txtAddress.setText(dto.getAddress());
         } catch (Exception e) {
         }
     }

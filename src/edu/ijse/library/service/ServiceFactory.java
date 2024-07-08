@@ -4,6 +4,7 @@
  */
 package edu.ijse.library.service;
 
+import edu.ijse.library.service.custom.impl.MemberServiceImpl;
 import edu.ijse.library.service.custom.impl.UserServiceImpl;
 
 /**
@@ -11,29 +12,32 @@ import edu.ijse.library.service.custom.impl.UserServiceImpl;
  * @author hirus
  */
 public class ServiceFactory {
-    private static  ServiceFactory serviceFactory;
-    
-    private ServiceFactory(){
-        
+
+    private static ServiceFactory serviceFactory;
+
+    private ServiceFactory() {
+
     }
-    
-    public static ServiceFactory getInstance(){
+
+    public static ServiceFactory getInstance() {
         if (serviceFactory == null) {
             serviceFactory = new ServiceFactory();
         }
         return serviceFactory;
     }
-    
-    public SuperService getService(serviceType type){
+
+    public SuperService getService(serviceType type) {
         switch (type) {
             case USER:
                 return new UserServiceImpl();
+            case MEMBER:
+                return new MemberServiceImpl();
             default:
                 throw new AssertionError();
         }
     }
-    
-    public enum serviceType{
-        USER
+
+    public enum serviceType {
+        USER, MEMBER
     }
 }
