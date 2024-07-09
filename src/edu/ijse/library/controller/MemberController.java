@@ -30,6 +30,6 @@ public class MemberController {
         return memberService.get(code);
     }
     public ArrayList<MemberDTO> getAll() throws Exception{
-        return null;
+        return memberService.getAll();
     }
 }

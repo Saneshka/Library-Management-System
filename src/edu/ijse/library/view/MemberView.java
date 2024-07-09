@@ -6,15 +6,17 @@ package edu.ijse.library.view;
 
 import edu.ijse.library.controller.MemberController;
 import edu.ijse.library.dto.MemberDTO;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author hirus
  */
 public class MemberView extends javax.swing.JFrame {
-    
+
     private final MemberController MEMBER_CONTROLLER;
 
     /**
@@ -23,6 +25,7 @@ public class MemberView extends javax.swing.JFrame {
     public MemberView() {
         initComponents();
         MEMBER_CONTROLLER = new MemberController();
+        loadTable();
     }
 
     /**
@@ -360,37 +363,40 @@ public class MemberView extends javax.swing.JFrame {
     private javax.swing.JTextField txtPhoneNo;
     // End of variables declaration//GEN-END:variables
 
-    public void saveMember(){
+    public void saveMember() {
         try {
             MemberDTO dto = new MemberDTO(txtMemberCode.getText(), txtFirstName.getText(), txtLastName.getText(), txtPhoneNo.getText(), txtAddress.getText());
             String resp = MEMBER_CONTROLLER.save(dto);
             JOptionPane.showMessageDialog(this, resp);
+            loadTable();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
-    
-    public void updateMember(){
+
+    public void updateMember() {
         try {
             MemberDTO dto = new MemberDTO(txtMemberCode.getText(), txtFirstName.getText(), txtLastName.getText(), txtPhoneNo.getText(), txtAddress.getText());
             String resp = MEMBER_CONTROLLER.update(dto);
             JOptionPane.showMessageDialog(this, resp);
+            loadTable();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
-    
-    public void deleteMember(){
+
+    public void deleteMember() {
         try {
             String code = txtMemberCode.getText();
             String resp = MEMBER_CONTROLLER.delete(code);
             JOptionPane.showMessageDialog(this, resp);
+            loadTable();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
-    
-    public void searchMember(){
+
+    public void searchMember() {
         try {
             String code = txtMemberCode.getText();
             MemberDTO dto = MEMBER_CONTROLLER.get(code);
@@ -399,6 +405,30 @@ public class MemberView extends javax.swing.JFrame {
             txtPhoneNo.setText(dto.getPhoneNo());
             txtAddress.setText(dto.getAddress());
         } catch (Exception e) {
+        }
+    }
+
+    public void loadTable() {
+        try {
+            String[] Columns = {"Member Code", "First Name", "Last Name", "Phone No", "Address"};
+
+            DefaultTableModel dtm = new DefaultTableModel(Columns, 0) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            tblMember.setModel(dtm);
+
+            ArrayList<MemberDTO> memberDTOs = MEMBER_CONTROLLER.getAll();
+
+            for (MemberDTO memberDTO : memberDTOs) {
+                Object[] rowData = {memberDTO.getmCode(), memberDTO.getFirstName(), memberDTO.getLastName(), memberDTO.getPhoneNo(), memberDTO.getAddress()};
+                dtm.addRow(rowData);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
 }

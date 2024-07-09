@@ -5,6 +5,7 @@
 package edu.ijse.library.dao.custom.impl;
 
 import edu.ijse.library.dao.CrudUtil;
+import edu.ijse.library.dao.DaoFactory;
 import edu.ijse.library.dao.custom.MemberDao;
 import edu.ijse.library.entity.MemberEntity;
 import java.util.ArrayList;
@@ -47,7 +48,14 @@ public class MemberDaoImpl implements MemberDao{
 
     @Override
     public ArrayList<MemberEntity> getAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ResultSet rest = CrudUtil.executeQuary("SELECT * FROM member");
+        ArrayList<MemberEntity> memberEntities = new ArrayList<>();
+        
+        while (rest.next()){
+            MemberEntity entity = new MemberEntity( rest.getString("mCode"), rest.getString("firstName"), rest.getString("lastName"), rest.getString("phoneNo"), rest.getString("address")  );
+           memberEntities.add(entity);
+        }
+        return memberEntities;
     }
     
 }
