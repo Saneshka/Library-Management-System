@@ -9,6 +9,7 @@ package edu.ijse.library.entity;
  * @author hirus
  */
 public class UserEntity {
+    private Integer uid;
     private String uCode;
     private String firstName;
     private String lastName;
@@ -17,6 +18,17 @@ public class UserEntity {
 
     public UserEntity() {
     }
+
+    public UserEntity(Integer uid, String uCode, String firstName, String lastName, String username, String password) {
+        this.uid = uid;
+        this.uCode = uCode;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+    }
+    
+    
 
     public UserEntity( String uCode, String firstName, String lastName, String username, String password) {
         this.uCode = uCode;
@@ -29,6 +41,20 @@ public class UserEntity {
     public UserEntity(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    /**
+     * @return the uid
+     */
+    public Integer getUid() {
+        return uid;
+    }
+
+    /**
+     * @param uid the uid to set
+     */
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
     /**
@@ -103,9 +129,10 @@ public class UserEntity {
 
     @Override
     public String toString() {
-        return "UserEntity{" + "uCode=" + uCode + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password=" + password + '}';
+        return "UserEntity{" + "uid=" + uid + ", uCode=" + uCode + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password=" + password + '}';
     }
     
     
-    
+
+  
 }

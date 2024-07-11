@@ -9,7 +9,7 @@ package edu.ijse.library.entity;
  * @author hirus
  */
 public class MemberEntity {
-    
+    private  Integer mid;
     private String mCode;
     private String firstName;
     private String lastName;
@@ -17,6 +17,15 @@ public class MemberEntity {
     private String address;
 
     public MemberEntity() {
+    }
+
+    public MemberEntity(Integer mid, String mCode, String firstName, String lastName, String phoneNo, String address) {
+        this.mid = mid;
+        this.mCode = mCode;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNo = phoneNo;
+        this.address = address;
     }
 
     public MemberEntity(String mCode, String firstName, String lastName, String phoneNo, String address) {
@@ -27,8 +36,20 @@ public class MemberEntity {
         this.address = address;
     }
 
-    
-    
+    /**
+     * @return the mid
+     */
+    public Integer getMid() {
+        return mid;
+    }
+
+    /**
+     * @param mid the mid to set
+     */
+    public void setMid(Integer mid) {
+        this.mid = mid;
+    }
+
     /**
      * @return the mCode
      */
@@ -101,10 +122,8 @@ public class MemberEntity {
 
     @Override
     public String toString() {
-        return "MemberEntity{" + "mCode=" + mCode + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNo=" + phoneNo + ", address=" + address + '}';
+        return "MemberEntity{" + "mid=" + mid + ", mCode=" + mCode + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNo=" + phoneNo + ", address=" + address + '}';
     }
-    
-    
     
     
 }

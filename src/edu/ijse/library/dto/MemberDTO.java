@@ -9,6 +9,7 @@ package edu.ijse.library.dto;
  * @author hirus
  */
 public class MemberDTO {
+    private Integer mid;
     private String mCode;
     private String firstName;
     private String lastName;
@@ -25,8 +26,29 @@ public class MemberDTO {
         this.phoneNo = phoneNo;
         this.address = address;
     }
-    
-    
+
+    public MemberDTO(Integer mid, String mCode, String firstName, String lastName, String phoneNo, String address) {
+        this.mid = mid;
+        this.mCode = mCode;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNo = phoneNo;
+        this.address = address;
+    }
+
+    /**
+     * @return the mid
+     */
+    public Integer getMid() {
+        return mid;
+    }
+
+    /**
+     * @param mid the mid to set
+     */
+    public void setMid(Integer mid) {
+        this.mid = mid;
+    }
 
     /**
      * @return the mCode
@@ -98,10 +120,6 @@ public class MemberDTO {
         this.address = address;
     }
 
-    @Override
-    public String toString() {
-        return "MemberDTO{" + "mCode=" + mCode + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNo=" + phoneNo + ", address=" + address + '}';
-    }
     
     
 }

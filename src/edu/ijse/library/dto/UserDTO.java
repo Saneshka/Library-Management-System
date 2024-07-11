@@ -10,7 +10,7 @@ package edu.ijse.library.dto;
  */
 public class UserDTO {
     
-
+    private Integer uid;
     private String uCode;
     private String firstName;
     private String lastName;
@@ -18,6 +18,15 @@ public class UserDTO {
     private String password;
 
     public UserDTO() {
+    }
+
+    public UserDTO(Integer uid, String uCode, String firstName, String lastName, String username, String password) {
+        this.uid = uid;
+        this.uCode = uCode;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
     }
 
     public UserDTO( String uCode, String firstName, String lastName, String username, String password) {
@@ -32,7 +41,27 @@ public class UserDTO {
         this.username = username;
         this.password = password;
     }
+    
+    
 
+    @Override
+    public String toString() {
+        return "UserDTO{" + "uid=" + getUid() + ", uCode=" + getuCode() + ", firstName=" + getFirstName() + ", lastName=" + getLastName() + ", username=" + getUsername() + ", password=" + getPassword() + '}';
+    }
+
+    /**
+     * @return the uid
+     */
+    public Integer getUid() {
+        return uid;
+    }
+
+    /**
+     * @param uid the uid to set
+     */
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
 
     /**
      * @return the uCode
@@ -104,10 +133,7 @@ public class UserDTO {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "UserDTO{" + "uCode=" + uCode + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password=" + password + '}';
-    }
+
 
 
     
