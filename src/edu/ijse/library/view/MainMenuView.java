@@ -43,6 +43,11 @@ public class MainMenuView extends javax.swing.JFrame {
 
         btnUserManagement.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnUserManagement.setText("User Management");
+        btnUserManagement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUserManagementActionPerformed(evt);
+            }
+        });
 
         btnCategoryManagement.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCategoryManagement.setText("Category Management");
@@ -105,6 +110,12 @@ public class MainMenuView extends javax.swing.JFrame {
         new MemberView().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMemberManagementActionPerformed
+
+    private void btnUserManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserManagementActionPerformed
+        // TODO add your handling code here:
+        new UserView().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnUserManagementActionPerformed
 
     /**
      * @param args the command line arguments
