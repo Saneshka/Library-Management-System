@@ -138,7 +138,7 @@
           <Font name="Segoe UI" size="24" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Member Management"/>
+        <Property name="text" type="java.lang.String" value="User Management"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblUserCode">

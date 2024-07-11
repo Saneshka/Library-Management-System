@@ -58,7 +58,7 @@ public class UserView extends javax.swing.JFrame {
 
         lblHeader.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHeader.setText("Member Management");
+        lblHeader.setText("User Management");
 
         lblUserCode.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblUserCode.setText("User Code");
@@ -286,6 +286,7 @@ public class UserView extends javax.swing.JFrame {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
+        clearForm();
     }//GEN-LAST:event_btnClearActionPerformed
 
     /**
@@ -348,6 +349,7 @@ public void saveUser(){
             UserDTO dto = new UserDTO( txtUserCode.getText(), txtFirstName.getText(), txtLastName.getText(), txtUsername.getText(), txtPassword.getText());
             String resp = USER_CONTROLLER.save(dto);
             JOptionPane.showMessageDialog(this, resp);
+            clearForm();
             loadTable();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -358,6 +360,7 @@ public void saveUser(){
             UserDTO dto = new UserDTO(txtUserCode.getText(), txtFirstName.getText(), txtLastName.getText(), txtUsername.getText(), txtPassword.getText());
             String resp = USER_CONTROLLER.update(dto);
             JOptionPane.showMessageDialog(this, resp);
+            clearForm();
             loadTable();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -368,6 +371,7 @@ public void saveUser(){
             String code = txtUserCode.getText();
             String resp = USER_CONTROLLER.Delete(code);
             JOptionPane.showMessageDialog(this, resp);
+            clearForm();
             loadTable();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -406,6 +410,13 @@ public void saveUser(){
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+    }
+    public void clearForm(){
+        txtUserCode.setText("");
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtUsername.setText("");
+        txtPassword.setText("");
     }
 
 }

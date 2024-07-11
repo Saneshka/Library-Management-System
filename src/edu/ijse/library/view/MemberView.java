@@ -294,6 +294,7 @@ public class MemberView extends javax.swing.JFrame {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
+        clearFrom();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void txtMemberCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberCodeActionPerformed
@@ -368,6 +369,7 @@ public class MemberView extends javax.swing.JFrame {
             MemberDTO dto = new MemberDTO(txtMemberCode.getText(), txtFirstName.getText(), txtLastName.getText(), txtPhoneNo.getText(), txtAddress.getText());
             String resp = MEMBER_CONTROLLER.save(dto);
             JOptionPane.showMessageDialog(this, resp);
+            clearFrom();
             loadTable();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -379,6 +381,7 @@ public class MemberView extends javax.swing.JFrame {
             MemberDTO dto = new MemberDTO(txtMemberCode.getText(), txtFirstName.getText(), txtLastName.getText(), txtPhoneNo.getText(), txtAddress.getText());
             String resp = MEMBER_CONTROLLER.update(dto);
             JOptionPane.showMessageDialog(this, resp);
+            clearFrom();
             loadTable();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -390,6 +393,7 @@ public class MemberView extends javax.swing.JFrame {
             String code = txtMemberCode.getText();
             String resp = MEMBER_CONTROLLER.delete(code);
             JOptionPane.showMessageDialog(this, resp);
+            clearFrom();
             loadTable();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -430,5 +434,12 @@ public class MemberView extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+    }
+    public void clearFrom(){
+        txtMemberCode.setText("");
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtPhoneNo.setText("");
+        txtAddress.setText("");
     }
 }
