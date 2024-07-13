@@ -99,6 +99,8 @@ public class MainMenuView extends javax.swing.JFrame {
 
     private void btnCategoryManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoryManagementActionPerformed
         // TODO add your handling code here:
+        new CategoryView().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnCategoryManagementActionPerformed
 
     private void btnCategoryManagement1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoryManagement1ActionPerformed

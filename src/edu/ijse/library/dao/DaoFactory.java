@@ -4,6 +4,7 @@
  */
 package edu.ijse.library.dao;
 
+import edu.ijse.library.dao.custom.impl.CategoryDaoImpl;
 import edu.ijse.library.dao.custom.impl.MemberDaoImpl;
 import edu.ijse.library.dao.custom.impl.UserDaoImpl;
 
@@ -32,12 +33,14 @@ public class DaoFactory {
                 return new UserDaoImpl();
             case MEMBER:
                 return new MemberDaoImpl();
+            case CATEGORY:
+                return new CategoryDaoImpl();
             default:
                 throw new AssertionError();
         }
     }
     
     public enum daoTypes{
-        USER, MEMBER
+        USER, MEMBER, CATEGORY
     }
 }
