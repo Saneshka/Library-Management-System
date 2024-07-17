@@ -29,6 +29,9 @@ public class MemberController {
     public MemberDTO get(String code) throws Exception{
         return memberService.get(code);
     }
+    public MemberDTO getById(int id) throws Exception{
+        return memberService.getById(id);
+    }
     public ArrayList<MemberDTO> getAll() throws Exception{
         return memberService.getAll();
     }

@@ -39,7 +39,7 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public MemberDTO get(String code) throws Exception {
         MemberEntity entity = dao.get(code);
-        MemberDTO dto = new MemberDTO(entity.getmCode(), entity.getFirstName(), entity.getLastName(), entity.getPhoneNo(), entity.getAddress());
+        MemberDTO dto = new MemberDTO(entity.getMid(), entity.getmCode(), entity.getFirstName(), entity.getLastName(), entity.getPhoneNo(), entity.getAddress());
         return dto;
     }
 
@@ -53,6 +53,13 @@ public class MemberServiceImpl implements MemberService{
             dtoList.add(dto);
         }
         return dtoList;
+    }
+
+    @Override
+    public MemberDTO getById(int id) throws Exception {
+        MemberEntity entity = dao.getById(id);
+        MemberDTO dto = new MemberDTO(entity.getMid(), entity.getmCode(), entity.getFirstName(), entity.getLastName(), entity.getPhoneNo(), entity.getAddress());
+        return dto;
     }
     
 }

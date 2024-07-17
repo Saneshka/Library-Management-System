@@ -39,7 +39,7 @@ public class BookServiceImpl implements BookService{
     @Override
     public BookDTO get(String code) throws Exception {
         BookEntity entity = dao.get(code);
-        BookDTO dto = new BookDTO(entity.getbCode(), entity.getTitle(), entity.getAuthor(), entity.getPublisher(), entity.getPublishDate(), entity.getDescription(), entity.getQty(), entity.getCid());
+        BookDTO dto = new BookDTO(entity.getBid(), entity.getbCode(), entity.getTitle(), entity.getAuthor(), entity.getPublisher(), entity.getPublishDate(), entity.getDescription(), entity.getQty(), entity.getCid());
         return dto;
     }
 
@@ -53,6 +53,13 @@ public class BookServiceImpl implements BookService{
             dtoList.add(dto);
         }
         return dtoList;
+    }
+
+    @Override
+    public BookDTO getById(int id) throws Exception {
+        BookEntity entity = dao.getById(id);
+        BookDTO dto = new BookDTO(entity.getBid(), entity.getbCode(), entity.getTitle(), entity.getAuthor(), entity.getPublisher(), entity.getPublishDate(), entity.getDescription(), entity.getQty(), entity.getCid());
+        return dto;
     }
     
 }

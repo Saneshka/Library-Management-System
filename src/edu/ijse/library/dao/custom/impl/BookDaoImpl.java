@@ -56,5 +56,16 @@ public class BookDaoImpl implements BookDao{
         }
         return entities;
     }
+
+    @Override
+    public BookEntity getById(int id) throws Exception {
+        ResultSet rest = CrudUtil.executeQuary("SELECT * FROM book WHERE bid = ?", id);
+        
+        if (rest.next()) {
+            BookEntity entity = new BookEntity(rest.getInt("bid"), rest.getString("bCode"), rest.getString("title"), rest.getString("author"), rest.getString("publisher"), rest.getString("publishDate"), rest.getString("description"), rest.getInt("qty"), rest.getInt("cid"));
+            return entity;
+        }
+        return null;
+    }
     
 }

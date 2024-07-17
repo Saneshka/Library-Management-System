@@ -29,7 +29,8 @@ public class MainMenuView extends javax.swing.JFrame {
         btnMemberManagement = new javax.swing.JButton();
         btnUserManagement = new javax.swing.JButton();
         btnCategoryManagement = new javax.swing.JButton();
-        btnCategoryManagement1 = new javax.swing.JButton();
+        btnBookManagement = new javax.swing.JButton();
+        btnBookLendManagement = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,11 +58,19 @@ public class MainMenuView extends javax.swing.JFrame {
             }
         });
 
-        btnCategoryManagement1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnCategoryManagement1.setText("Book Management");
-        btnCategoryManagement1.addActionListener(new java.awt.event.ActionListener() {
+        btnBookManagement.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBookManagement.setText("Book Management");
+        btnBookManagement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCategoryManagement1ActionPerformed(evt);
+                btnBookManagementActionPerformed(evt);
+            }
+        });
+
+        btnBookLendManagement.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBookLendManagement.setText("Lend Management");
+        btnBookLendManagement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookLendManagementActionPerformed(evt);
             }
         });
 
@@ -70,14 +79,19 @@ public class MainMenuView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnMemberManagement, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                    .addComponent(btnUserManagement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(110, 110, 110)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCategoryManagement)
-                    .addComponent(btnCategoryManagement1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnMemberManagement, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                            .addComponent(btnUserManagement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(110, 110, 110)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCategoryManagement)
+                            .addComponent(btnBookManagement, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(237, 237, 237)
+                        .addComponent(btnBookLendManagement, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(125, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -90,8 +104,10 @@ public class MainMenuView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUserManagement, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCategoryManagement1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(196, Short.MAX_VALUE))
+                    .addComponent(btnBookManagement, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addComponent(btnBookLendManagement, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         pack();
@@ -103,9 +119,11 @@ public class MainMenuView extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnCategoryManagementActionPerformed
 
-    private void btnCategoryManagement1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoryManagement1ActionPerformed
+    private void btnBookManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookManagementActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCategoryManagement1ActionPerformed
+        new BookView().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBookManagementActionPerformed
 
     private void btnMemberManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMemberManagementActionPerformed
         // TODO add your handling code here:
@@ -118,6 +136,12 @@ public class MainMenuView extends javax.swing.JFrame {
         new UserView().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnUserManagementActionPerformed
+
+    private void btnBookLendManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookLendManagementActionPerformed
+        // TODO add your handling code here:
+        new LendView().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBookLendManagementActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,8 +179,9 @@ public class MainMenuView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBookLendManagement;
+    private javax.swing.JButton btnBookManagement;
     private javax.swing.JButton btnCategoryManagement;
-    private javax.swing.JButton btnCategoryManagement1;
     private javax.swing.JButton btnMemberManagement;
     private javax.swing.JButton btnUserManagement;
     // End of variables declaration//GEN-END:variables

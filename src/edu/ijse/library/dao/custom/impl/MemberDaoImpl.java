@@ -40,7 +40,7 @@ public class MemberDaoImpl implements MemberDao{
     public MemberEntity get(String code) throws Exception {
         ResultSet rest = CrudUtil.executeQuary("SELECT * FROM member WHERE mCode = ?", code);
         if (rest.next()) {
-            MemberEntity entity = new MemberEntity(rest.getString("mCode"), rest.getString("firstName"), rest.getString("lastName"), rest.getString("phoneNo"), rest.getString("address"));
+            MemberEntity entity = new MemberEntity(rest.getInt("mid"), rest.getString("mCode"), rest.getString("firstName"), rest.getString("lastName"), rest.getString("phoneNo"), rest.getString("address"));
             return entity;
         }
         return null;
@@ -56,6 +56,16 @@ public class MemberDaoImpl implements MemberDao{
            memberEntities.add(entity);
         }
         return memberEntities;
+    }
+
+    @Override
+    public MemberEntity getById(int id) throws Exception {
+        ResultSet rest = CrudUtil.executeQuary("SELECT * FROM member WHERE mid = ?", id);
+        if (rest.next()) {
+            MemberEntity entity = new MemberEntity(rest.getInt("mid"), rest.getString("mCode"), rest.getString("firstName"), rest.getString("lastName"), rest.getString("phoneNo"), rest.getString("address"));
+            return entity;
+        }
+        return null;
     }
     
 }

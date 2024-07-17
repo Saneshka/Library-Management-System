@@ -17,5 +17,6 @@ public interface MemberService extends SuperService{
     String update(MemberDTO dto) throws Exception;
     String delete(String code) throws Exception;
     MemberDTO get(String code) throws Exception;
+    MemberDTO getById(int id) throws Exception;
     ArrayList<MemberDTO> getAll() throws Exception;
 }

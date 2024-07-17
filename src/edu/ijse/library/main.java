@@ -4,6 +4,7 @@
  */
 package edu.ijse.library;
 
+import edu.ijse.library.view.LendView;
 import edu.ijse.library.view.LoginView;
 
 /**
@@ -17,7 +18,8 @@ public class main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new LoginView().setVisible(true);
+//        new LoginView().setVisible(true);
+        new LendView().setVisible(true);
     }
     
 }

@@ -6,6 +6,7 @@ package edu.ijse.library.service;
 
 import edu.ijse.library.service.custom.impl.BookServiceImpl;
 import edu.ijse.library.service.custom.impl.CategoryServiceImpl;
+import edu.ijse.library.service.custom.impl.LendServiceImpl;
 import edu.ijse.library.service.custom.impl.MemberServiceImpl;
 import edu.ijse.library.service.custom.impl.UserServiceImpl;
 
@@ -38,12 +39,14 @@ public class ServiceFactory {
                 return new CategoryServiceImpl();
             case BOOK:
                 return new BookServiceImpl();
+            case LEND:
+                return new LendServiceImpl();
             default:
                 throw new AssertionError();
         }
     }
 
     public enum serviceType {
-        USER, MEMBER, CATEGORY, BOOK
+        USER, MEMBER, CATEGORY, BOOK, LEND
     }
 }

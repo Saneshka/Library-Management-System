@@ -17,5 +17,6 @@ public interface BookDao extends SuperDAO{
     String update(BookEntity entity) throws Exception;
     String delete(String code) throws Exception;
     BookEntity get(String code) throws Exception;
+    BookEntity getById(int id) throws Exception;
     ArrayList<BookEntity> getAll() throws Exception;
 }

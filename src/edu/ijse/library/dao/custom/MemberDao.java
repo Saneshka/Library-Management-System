@@ -17,5 +17,6 @@ public interface MemberDao extends SuperDAO{
     String update(MemberEntity entity) throws Exception;
     String delete(String code) throws Exception;
     MemberEntity get(String code) throws Exception;
+    MemberEntity getById(int id) throws Exception;
     ArrayList<MemberEntity> getAll() throws Exception;
 }
