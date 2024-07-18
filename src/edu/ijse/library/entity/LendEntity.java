@@ -40,10 +40,13 @@ public class LendEntity {
         this.dueDate = dueDate;
     }
 
-    public LendEntity(String returnDate, Double fine) {
+    public LendEntity(String lCode, String returnDate, Double fine) {
+        this.lCode = lCode;
         this.returnDate = returnDate;
         this.fine = fine;
     }
+
+    
 
     /**
      * @return the lid

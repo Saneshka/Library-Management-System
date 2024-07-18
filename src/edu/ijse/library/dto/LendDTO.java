@@ -40,7 +40,8 @@ public class LendDTO {
         this.dueDate = dueDate;
     }
 
-    public LendDTO(String returnDate, Double fine) {
+    public LendDTO(String lCode, String returnDate, Double fine) {
+        this.lCode = lCode;
         this.returnDate = returnDate;
         this.fine = fine;
     }

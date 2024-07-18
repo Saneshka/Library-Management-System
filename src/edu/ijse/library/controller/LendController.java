@@ -22,4 +22,10 @@ public class LendController {
     public ArrayList<LendDTO> getAll() throws Exception{
         return lendService.getAll();
     }
+    public LendDTO get(String code) throws Exception{
+        return lendService.get(code);
+    }
+    public String update(LendDTO dto)throws Exception{
+        return lendService.update(dto);
+    }
 }

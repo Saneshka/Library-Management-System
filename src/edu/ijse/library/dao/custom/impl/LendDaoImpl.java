@@ -19,7 +19,7 @@ public class LendDaoImpl implements LendDao {
 
     @Override
     public String LendBook(LendEntity entity) throws Exception {
-        boolean isSaved = CrudUtil.executeUpdate("INSERT INTO lend (lCode, bookId, memberId, borrowDate, dueDate, fine) VALUES (?,?,?,?,?,?)", entity.getlCode(), entity.getBookId(), entity.getMemberId(), entity.getBorrowDate(), entity.getDueDate(),-1);
+        boolean isSaved = CrudUtil.executeUpdate("INSERT INTO lend (lCode, bookId, memberId, borrowDate, dueDate, fine) VALUES (?,?,?,?,?,?)", entity.getlCode(), entity.getBookId(), entity.getMemberId(), entity.getBorrowDate(), entity.getDueDate(), -1);
         return isSaved ? "Lending Information Added to the System Successfully" : "Failed to add Lending Information";
     }
 
@@ -34,5 +34,23 @@ public class LendDaoImpl implements LendDao {
         }
         return entityList;
     }
+
+    @Override
+    public LendEntity get(String code) throws Exception {
+        ResultSet rest = CrudUtil.executeQuary("SELECT * FROM lend WHERE lCode = ?", code);
+        if (rest.next()) {
+            LendEntity entity = new LendEntity(rest.getString("lCode"), rest.getInt("bookId"), rest.getInt("memberId"), rest.getString("borrowDate"), rest.getString("dueDate"));
+            return entity;
+        }
+        return null;
+    }
+
+    @Override
+    public String update(LendEntity entity) throws Exception {
+        boolean isUpdate = CrudUtil.executeUpdate("UPDATE lend SET returnDate = ?, fine = ? WHERE lCode = ?", entity.getReturnDate(), entity.getFine(), entity.getlCode());
+        return isUpdate ? "Success" : "Failed";
+    }
+
+
 
 }

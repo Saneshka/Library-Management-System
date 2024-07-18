@@ -35,6 +35,19 @@ public class LendServiceImpl implements LendService{
         }
         return dtoList;
     }
+
+    @Override
+    public LendDTO get(String code) throws Exception {
+        LendEntity entity = dao.get(code);
+        LendDTO dto = new LendDTO(entity.getlCode(), entity.getBookId(), entity.getMemberId(), entity.getBorrowDate(), entity.getDueDate());
+        return dto;
+    }
+
+    @Override
+    public String update(LendDTO dto) throws Exception {
+        LendEntity entity = new LendEntity(dto.getlCode(), dto.getReturnDate(), dto.getFine());
+        return dao.update(entity);
+    }
     
     
 }

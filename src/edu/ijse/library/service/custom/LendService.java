@@ -15,4 +15,6 @@ import java.util.ArrayList;
 public interface LendService extends SuperService{
     String lendBook(LendDTO dto) throws Exception;
     ArrayList<LendDTO> getAll() throws Exception;
+    LendDTO get(String code) throws Exception;
+    String update(LendDTO dto) throws Exception;
 }
