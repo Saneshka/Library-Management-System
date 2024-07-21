@@ -6,6 +6,7 @@ package edu.ijse.library.dao;
 
 import edu.ijse.library.dao.custom.impl.BookDaoImpl;
 import edu.ijse.library.dao.custom.impl.CategoryDaoImpl;
+import edu.ijse.library.dao.custom.impl.FineDaoImpl;
 import edu.ijse.library.dao.custom.impl.LendDaoImpl;
 import edu.ijse.library.dao.custom.impl.MemberDaoImpl;
 import edu.ijse.library.dao.custom.impl.UserDaoImpl;
@@ -41,12 +42,14 @@ public class DaoFactory {
                 return new BookDaoImpl();
             case LEND:
                 return new LendDaoImpl();
+            case FINE:
+                return new FineDaoImpl();
             default:
                 throw new AssertionError();
         }
     }
     
     public enum daoTypes{
-        USER, MEMBER, CATEGORY, BOOK, LEND
+        USER, MEMBER, CATEGORY, BOOK, LEND, FINE
     }
 }

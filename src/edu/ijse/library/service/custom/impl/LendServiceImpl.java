@@ -9,7 +9,11 @@ import edu.ijse.library.dto.LendDTO;
 import edu.ijse.library.entity.LendEntity;
 import edu.ijse.library.service.custom.LendService;
 import edu.ijse.library.dao.DaoFactory;
+import edu.ijse.library.dao.custom.FineDao;
+import edu.ijse.library.db.DBConnection;
+import edu.ijse.library.entity.FineEntity;
 import java.util.ArrayList;
+import java.sql.Connection;
 /**
  *
  * @author hirus
@@ -17,6 +21,7 @@ import java.util.ArrayList;
 public class LendServiceImpl implements LendService{
     
     private LendDao dao = (LendDao) DaoFactory.getInstance().getDao(DaoFactory.daoTypes.LEND);
+    private FineDao fineDao = (FineDao) DaoFactory.getInstance().getDao(DaoFactory.daoTypes.FINE);
 
     @Override
     public String lendBook(LendDTO dto) throws Exception {
@@ -39,7 +44,7 @@ public class LendServiceImpl implements LendService{
     @Override
     public LendDTO get(String code) throws Exception {
         LendEntity entity = dao.get(code);
-        LendDTO dto = new LendDTO(entity.getlCode(), entity.getBookId(), entity.getMemberId(), entity.getBorrowDate(), entity.getDueDate());
+        LendDTO dto = new LendDTO(entity.getLid(), entity.getlCode(), entity.getBookId(), entity.getMemberId(), entity.getBorrowDate(), entity.getDueDate(), entity.getReturnDate(), entity.getFine());
         return dto;
     }
 
@@ -47,6 +52,40 @@ public class LendServiceImpl implements LendService{
     public String update(LendDTO dto) throws Exception {
         LendEntity entity = new LendEntity(dto.getlCode(), dto.getReturnDate(), dto.getFine());
         return dao.update(entity);
+    }
+
+    @Override
+    public String lateReturnBook(LendDTO dto) throws Exception {
+        Connection connection = DBConnection.getInstance().getConnection();
+        try {
+            connection.setAutoCommit(false);
+            
+            LendEntity lendEntity = new LendEntity(dto.getlCode(), dto.getReturnDate(), dto.getFine());
+            String resp = dao.update(lendEntity);
+            
+            if (resp.equals("Success")) {
+                FineEntity fineEntity = new  FineEntity(dto.getLid(), dto.getFine(), false);
+                String respFromFine = fineDao.save(fineEntity);
+                
+                if (respFromFine.equals("Success")) {
+                    connection.commit();
+                    return "Book Returned Successfully";
+                }else{
+                    connection.rollback();
+                    return "Failed to add Fine";
+                }
+                
+            }else{
+                connection.rollback();
+                return "Failed to Update Lend Details";
+            }
+        } catch (Exception e) {
+            connection.rollback();
+            e.printStackTrace();
+            return "Server Error";
+        }finally{
+            connection.setAutoCommit(true);
+        }
     }
     
     

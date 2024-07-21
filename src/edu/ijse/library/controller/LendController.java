@@ -28,4 +28,7 @@ public class LendController {
     public String update(LendDTO dto)throws Exception{
         return lendService.update(dto);
     }
+    public  String lateReturnBook(LendDTO dto)throws Exception{
+        return lendService.lateReturnBook(dto);
+    }
 }

@@ -39,7 +39,7 @@ public class LendDaoImpl implements LendDao {
     public LendEntity get(String code) throws Exception {
         ResultSet rest = CrudUtil.executeQuary("SELECT * FROM lend WHERE lCode = ?", code);
         if (rest.next()) {
-            LendEntity entity = new LendEntity(rest.getString("lCode"), rest.getInt("bookId"), rest.getInt("memberId"), rest.getString("borrowDate"), rest.getString("dueDate"));
+            LendEntity entity = new LendEntity(rest.getInt("lid"), rest.getString("lCode"), rest.getInt("bookId"), rest.getInt("memberId"), rest.getString("borrowDate"), rest.getString("dueDate"), rest.getString("returnDate"), rest.getDouble("fine"));
             return entity;
         }
         return null;

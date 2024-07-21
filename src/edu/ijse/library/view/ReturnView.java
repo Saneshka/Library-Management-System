@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -272,6 +273,16 @@ public class ReturnView extends javax.swing.JFrame {
             Double fine =(double) 50 * diffInDays;
             if (fine > 0) {
                 System.out.println("Have Fine");
+                LendDTO respDTO = lendController.get(txtLendCode.getText());
+                LendDTO dto = new LendDTO();
+                dto.setLid(respDTO.getLid());
+                System.out.println("LId : "+ respDTO.getLid());
+                dto.setlCode(txtLendCode.getText());
+                dto.setReturnDate(currentDate.toString());
+                dto.setFine(fine);
+                String resp = lendController.lateReturnBook(dto);
+                JOptionPane.showMessageDialog(this, resp);
+                
             }else{
                 LendDTO dto = new LendDTO(txtLendCode.getText(), currentDate.toString(), 0.0);
                 String resp = lendController.update(dto);
