@@ -25,8 +25,8 @@ public class LendController {
     public LendDTO get(String code) throws Exception{
         return lendService.get(code);
     }
-    public String update(LendDTO dto)throws Exception{
-        return lendService.update(dto);
+    public String onTimeReturnBook(LendDTO dto)throws Exception{
+        return lendService.ontimeReturnBook(dto);
     }
     public  String lateReturnBook(LendDTO dto)throws Exception{
         return lendService.lateReturnBook(dto);

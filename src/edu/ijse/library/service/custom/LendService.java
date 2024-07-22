@@ -16,7 +16,7 @@ public interface LendService extends SuperService{
     String lendBook(LendDTO dto) throws Exception;
     ArrayList<LendDTO> getAll() throws Exception;
     LendDTO get(String code) throws Exception;
-    String update(LendDTO dto) throws Exception;
+    String ontimeReturnBook(LendDTO dto) throws Exception;
     String lateReturnBook(LendDTO dto) throws Exception;
     String payFine(int lid)throws Exception;
 }

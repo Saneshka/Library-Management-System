@@ -22,8 +22,8 @@ public class main {
         // TODO code application logic here
 //        new LoginView().setVisible(true);
 //        new FineView().setVisible(true);
-        new LendView().setVisible(true);
-//        new ReturnView().setVisible(true);
+//        new LendView().setVisible(true);
+        new ReturnView().setVisible(true);
     }
     
 }

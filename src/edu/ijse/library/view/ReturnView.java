@@ -280,12 +280,16 @@ public class ReturnView extends javax.swing.JFrame {
                 dto.setlCode(txtLendCode.getText());
                 dto.setReturnDate(currentDate.toString());
                 dto.setFine(fine);
+                dto.setBookId(respDTO.getBookId());
                 String resp = lendController.lateReturnBook(dto);
                 JOptionPane.showMessageDialog(this, resp);
                 
             }else{
+                LendDTO respDto = lendController.get(txtLendCode.getText());
                 LendDTO dto = new LendDTO(txtLendCode.getText(), currentDate.toString(), 0.0);
-                String resp = lendController.update(dto);
+                dto.setBookId(respDto.getBookId());
+                String resp = lendController.onTimeReturnBook(dto);
+                JOptionPane.showMessageDialog(this, resp);
                 System.out.println("No Fine | "+ resp);
             }
             System.out.println("Fine : " + fine);

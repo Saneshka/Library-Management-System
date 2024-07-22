@@ -76,9 +76,36 @@ public class LendServiceImpl implements LendService{
     }
 
     @Override
-    public String update(LendDTO dto) throws Exception {
-        LendEntity entity = new LendEntity(dto.getlCode(), dto.getReturnDate(), dto.getFine());
-        return dao.update(entity);
+    public String ontimeReturnBook(LendDTO dto) throws Exception {
+        Connection connection = DBConnection.getInstance().getConnection();
+        try {
+            connection.setAutoCommit(false);
+            
+            LendEntity entity = new LendEntity(dto.getlCode(), dto.getReturnDate(), dto.getFine());
+            String lendResp = dao.update(entity);
+
+            if (lendResp.equals("Success")) {
+                String bookResp = bookDao.returnBook(dto.getBookId());
+                
+                if (bookResp.equals("Success")) {
+                    connection.commit();
+                    return "Book Returned Successfully";
+                }else{
+                    connection.rollback();
+                    return "Failed to Update Book Table";
+                }
+                
+            }else{
+                connection.rollback();
+                return "Failed to Update Lend Table";
+            }
+        } catch (Exception e) {
+            connection.rollback();
+            e.printStackTrace();
+            return "Server Error";
+        }finally{
+            connection.setAutoCommit(true);
+        }
     }
 
     @Override
@@ -95,8 +122,16 @@ public class LendServiceImpl implements LendService{
                 String respFromFine = fineDao.save(fineEntity);
                 
                 if (respFromFine.equals("Success")) {
-                    connection.commit();
-                    return "Book Returned Successfully";
+                    String bookResp = bookDao.returnBook(dto.getBookId());
+                    
+                    if (bookResp.equals("Success")) {
+                        connection.commit();
+                        return "Book Returned Successfully";
+                        
+                    }else{
+                        connection.rollback();
+                        return "Failed update book details";
+                    }
                 }else{
                     connection.rollback();
                     return "Failed to add Fine";

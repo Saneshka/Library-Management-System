@@ -73,5 +73,11 @@ public class BookDaoImpl implements BookDao{
         boolean isBookLend = CrudUtil.executeUpdate("UPDATE book SET qty = qty - 1 WHERE bid = ?", id);
         return isBookLend ? "Success" : "Failed";
     }
+
+    @Override
+    public String returnBook(int id) throws Exception {
+        boolean isBookReturned = CrudUtil.executeUpdate("UPDATE book SET qty = qty + 1 WHERE bid = ?", id);
+        return  isBookReturned ? "Success" : "Failed";
+    }
     
 }
