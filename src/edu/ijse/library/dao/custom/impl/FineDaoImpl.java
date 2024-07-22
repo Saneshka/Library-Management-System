@@ -19,5 +19,12 @@ public class FineDaoImpl implements FineDao{
         boolean isSaved = CrudUtil.executeUpdate("INSERT INTO fine VALUES (?,?,?,?)", 0, entity.getLendId(), entity.getAmount(), entity.getIsPaid());
         return  isSaved ? "Success" : "Failed";
     }
+
+    @Override
+    public String payFine(int lid) throws Exception {
+        boolean isFinePaid = CrudUtil.executeUpdate("UPDATE fine SET paid = ? WHERE lendId = ?", true, lid);
+        return  isFinePaid ? "Success" : "Failed";
+    }
+    
     
 }

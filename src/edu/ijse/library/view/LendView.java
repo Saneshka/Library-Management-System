@@ -381,7 +381,7 @@ public class LendView extends javax.swing.JFrame {
             BookDTO bookDTO = bookController.get(txtBookCode.getText());
             MemberDTO memberDTO = memberController.get(txtMemberCode.getText());
             LendDTO lendDTO = new LendDTO(txtLendCode.getText(), bookDTO.getBid(), memberDTO.getMid(), txtBorrowDate.getText(), txtDueDate.getText());
-            String resp = lendController.save(lendDTO);
+            String resp = lendController.lendBook(lendDTO);
             JOptionPane.showMessageDialog(this, resp);
             loadTable();
         } catch (Exception e) {

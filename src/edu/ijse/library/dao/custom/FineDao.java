@@ -13,4 +13,5 @@ import edu.ijse.library.entity.FineEntity;
  */
 public interface FineDao extends SuperDAO{
     String save(FineEntity entity) throws Exception;
+    String payFine(int lid) throws Exception;
 }

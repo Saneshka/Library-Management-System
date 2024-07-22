@@ -19,4 +19,5 @@ public interface LendDao extends SuperDAO{
     ArrayList<LendEntity> getAll() throws Exception;
     LendEntity get(String code) throws Exception;
     String update(LendEntity entity) throws Exception;
+    String payFine(int lid) throws Exception;
 }

@@ -20,7 +20,7 @@ public class LendDaoImpl implements LendDao {
     @Override
     public String LendBook(LendEntity entity) throws Exception {
         boolean isSaved = CrudUtil.executeUpdate("INSERT INTO lend (lCode, bookId, memberId, borrowDate, dueDate, fine) VALUES (?,?,?,?,?,?)", entity.getlCode(), entity.getBookId(), entity.getMemberId(), entity.getBorrowDate(), entity.getDueDate(), -1);
-        return isSaved ? "Lending Information Added to the System Successfully" : "Failed to add Lending Information";
+        return isSaved ? "Success" : "Failed";
     }
 
     @Override
@@ -49,6 +49,12 @@ public class LendDaoImpl implements LendDao {
     public String update(LendEntity entity) throws Exception {
         boolean isUpdate = CrudUtil.executeUpdate("UPDATE lend SET returnDate = ?, fine = ? WHERE lCode = ?", entity.getReturnDate(), entity.getFine(), entity.getlCode());
         return isUpdate ? "Success" : "Failed";
+    }
+
+    @Override
+    public String payFine(int lid) throws Exception {
+        boolean isFinePaid = CrudUtil.executeUpdate("UPDATE lend SET fine = ? WHERE lid = ?", 0.0, lid);
+        return isFinePaid ? "Success" : "Failed";
     }
 
 

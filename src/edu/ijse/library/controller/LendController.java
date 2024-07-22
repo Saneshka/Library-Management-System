@@ -16,7 +16,7 @@ public class LendController {
     
     private LendService lendService = (LendService) ServiceFactory.getInstance().getService(ServiceFactory.serviceType.LEND);
     
-    public String save(LendDTO dto) throws Exception{
+    public String lendBook(LendDTO dto) throws Exception{
         return lendService.lendBook(dto);
     }
     public ArrayList<LendDTO> getAll() throws Exception{
@@ -30,5 +30,9 @@ public class LendController {
     }
     public  String lateReturnBook(LendDTO dto)throws Exception{
         return lendService.lateReturnBook(dto);
+    }
+    public String payFine(int lid) throws Exception{
+        System.out.println("Controller Lid : " + lid);
+        return lendService.payFine(lid);
     }
 }

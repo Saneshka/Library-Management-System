@@ -87,6 +87,38 @@ public class LendServiceImpl implements LendService{
             connection.setAutoCommit(true);
         }
     }
+
+    @Override
+    public String payFine(int lid) throws Exception {
+        Connection connection = DBConnection.getInstance().getConnection();
+        try {
+            connection.setAutoCommit(false);
+            
+            String fineResp = fineDao.payFine(lid);
+            
+            if (fineResp.equals("Success")) {
+                String lendResp = dao.payFine(lid);
+                
+                if (lendResp.equals("Success")) {
+                    connection.commit();
+                    return "Fine Paid";
+                }else{
+                    connection.rollback();
+                    return "Failed to update lend Table";
+                }
+            }else{
+                connection.rollback();
+                return "Failed to update Fine table";
+            }
+        } catch (Exception e) {
+            connection.rollback();
+            e.printStackTrace();
+            return "Server Error";
+        }
+        finally{
+            connection.setAutoCommit(true);
+        }
+    }
     
     
 }
