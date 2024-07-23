@@ -380,11 +380,15 @@ public class LendView extends javax.swing.JFrame {
     public void lendBook() {
         try {
             BookDTO bookDTO = bookController.get(txtBookCode.getText());
-            MemberDTO memberDTO = memberController.get(txtMemberCode.getText());
-            LendDTO lendDTO = new LendDTO(txtLendCode.getText(), bookDTO.getBid(), memberDTO.getMid(), txtBorrowDate.getText(), txtDueDate.getText());
-            String resp = lendController.lendBook(lendDTO);
-            JOptionPane.showMessageDialog(this, resp);
-            loadTable();
+            if (bookDTO.getQty()>0) {
+                MemberDTO memberDTO = memberController.get(txtMemberCode.getText());
+                LendDTO lendDTO = new LendDTO(txtLendCode.getText(), bookDTO.getBid(), memberDTO.getMid(), txtBorrowDate.getText(), txtDueDate.getText());
+                String resp = lendController.lendBook(lendDTO);
+                JOptionPane.showMessageDialog(this, resp);
+                loadTable();    
+            }else{
+                JOptionPane.showMessageDialog(this, "Not enough stock in this book");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
