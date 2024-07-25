@@ -30,7 +30,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblHeader" min="-2" pref="708" max="-2" attributes="0"/>
@@ -76,12 +76,13 @@
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtDescription" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
-                              <Component id="txtPublishDate" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
-                              <Component id="txtCatgoryType" min="-2" pref="174" max="-2" attributes="0"/>
-                              <Component id="txtQty" min="-2" pref="174" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtDescription" alignment="0" pref="174" max="32767" attributes="0"/>
+                              <Component id="txtCatgoryType" pref="174" max="32767" attributes="0"/>
+                              <Component id="txtQty" pref="174" max="32767" attributes="0"/>
+                              <Component id="txtPublishDate" alignment="0" max="32767" attributes="0"/>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -110,37 +111,9 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblHeader" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtQty" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblQty" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtPublishDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblPublishDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtDescription" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblDescription" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtCatgoryType" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCatgoryType" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtBookCode" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblBookCode" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -162,6 +135,27 @@
                               <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                               <Component id="txtPublisher" min="-2" max="-2" attributes="0"/>
                           </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="txtPublishDate" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPublishDate" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtDescription" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDescription" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtQty" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblQty" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtCatgoryType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCatgoryType" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -237,11 +231,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Publish Date"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtPublishDate">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPublishDateActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblDescription">
       <Properties>
@@ -564,5 +553,10 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="com.toedter.calendar.JDateChooser" name="txtPublishDate">
+      <Properties>
+        <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

@@ -6,7 +6,9 @@ package edu.ijse.library.view;
 
 import edu.ijse.library.controller.BookController;
 import edu.ijse.library.dto.BookDTO;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -45,7 +47,6 @@ public class BookView extends javax.swing.JFrame {
         lblAuthor = new javax.swing.JLabel();
         txtAuthor = new javax.swing.JTextField();
         lblPublishDate = new javax.swing.JLabel();
-        txtPublishDate = new javax.swing.JTextField();
         lblDescription = new javax.swing.JLabel();
         txtDescription = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
@@ -76,6 +77,7 @@ public class BookView extends javax.swing.JFrame {
         jSeparator9 = new javax.swing.JSeparator();
         btnFineManagement = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        txtPublishDate = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,12 +114,6 @@ public class BookView extends javax.swing.JFrame {
 
         lblPublishDate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPublishDate.setText("Publish Date");
-
-        txtPublishDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPublishDateActionPerformed(evt);
-            }
-        });
 
         lblDescription.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDescription.setText("Description");
@@ -334,6 +330,8 @@ public class BookView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        txtPublishDate.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -341,7 +339,7 @@ public class BookView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(lblHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -376,11 +374,12 @@ public class BookView extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(lblCatgoryType, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtPublishDate, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtCatgoryType, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtQty, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtDescription, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                                .addComponent(txtCatgoryType, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                                .addComponent(txtQty, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                                .addComponent(txtPublishDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(312, 312, 312)
                         .addComponent(btnSearch)
@@ -402,29 +401,9 @@ public class BookView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblHeader)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(66, 66, 66)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblQty)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtPublishDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblPublishDate))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblDescription))))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCatgoryType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCatgoryType)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtBookCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblBookCode))
@@ -441,7 +420,23 @@ public class BookView extends javax.swing.JFrame {
                             .addComponent(lblPublisher)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
-                                .addComponent(txtPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtPublishDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPublishDate))
+                        .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDescription))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblQty))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCatgoryType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCatgoryType))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
@@ -469,10 +464,6 @@ public class BookView extends javax.swing.JFrame {
     private void txtAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAuthorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAuthorActionPerformed
-
-    private void txtPublishDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPublishDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPublishDateActionPerformed
 
     private void txtDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescriptionActionPerformed
         // TODO add your handling code here:
@@ -629,7 +620,7 @@ public class BookView extends javax.swing.JFrame {
     private javax.swing.JTextField txtBookCode;
     private javax.swing.JTextField txtCatgoryType;
     private javax.swing.JTextField txtDescription;
-    private javax.swing.JTextField txtPublishDate;
+    private com.toedter.calendar.JDateChooser txtPublishDate;
     private javax.swing.JTextField txtPublisher;
     private javax.swing.JTextField txtQty;
     private javax.swing.JTextField txtTitle;
@@ -637,7 +628,10 @@ public class BookView extends javax.swing.JFrame {
 
     public void saveBook(){
         try {
-            BookDTO dto  = new BookDTO(txtBookCode.getText(), txtTitle.getText(), txtAuthor.getText(), txtPublisher.getText(), txtPublishDate.getText(), txtDescription.getText(), Integer.parseInt(txtQty.getText()) , Integer.parseInt(txtCatgoryType.getText()));
+            Date dDate = txtPublishDate.getDate();
+            SimpleDateFormat sDate = new SimpleDateFormat("yyyy-MM-dd");
+            String publishDate = sDate.format(dDate); 
+            BookDTO dto  = new BookDTO(txtBookCode.getText(), txtTitle.getText(), txtAuthor.getText(), txtPublisher.getText(), publishDate, txtDescription.getText(), Integer.parseInt(txtQty.getText()) , Integer.parseInt(txtCatgoryType.getText()));
             String resp = BOOK_CONTROLLER.save(dto);
             JOptionPane.showMessageDialog(this, resp);
             clearForm();
@@ -648,7 +642,10 @@ public class BookView extends javax.swing.JFrame {
     }
     public void updateBook(){
         try {
-            BookDTO dto = new BookDTO(txtBookCode.getText(), txtTitle.getText(), txtAuthor.getText(), txtPublisher.getText(), txtPublishDate.getText(), txtDescription.getText(), Integer.parseInt(txtQty.getText()) , Integer.parseInt(txtCatgoryType.getText()));
+            Date dDate = txtPublishDate.getDate();
+            SimpleDateFormat sDate = new  SimpleDateFormat("yyyy-MM-dd");
+            String publishDate = sDate.format(dDate);
+            BookDTO dto = new BookDTO(txtBookCode.getText(), txtTitle.getText(), txtAuthor.getText(), txtPublisher.getText(), publishDate, txtDescription.getText(), Integer.parseInt(txtQty.getText()) , Integer.parseInt(txtCatgoryType.getText()));
             String resp = BOOK_CONTROLLER.update(dto);
             JOptionPane.showMessageDialog(this, resp);
             clearForm();
@@ -675,7 +672,8 @@ public class BookView extends javax.swing.JFrame {
             txtTitle.setText(dto.getTitle());
             txtAuthor.setText(dto.getAuthor());
             txtPublisher.setText(dto.getPublisher());
-            txtPublishDate.setText(dto.getPublishDate());
+            Date publishDate = new SimpleDateFormat("yyyy-MM-dd").parse(dto.getPublishDate());
+            txtPublishDate.setDate(publishDate);
             txtDescription.setText(dto.getDescription());
             txtQty.setText(dto.getQty().toString());
             txtCatgoryType.setText(dto.getCid().toString());
@@ -689,7 +687,7 @@ public class BookView extends javax.swing.JFrame {
         txtTitle.setText("");
         txtAuthor.setText("");
         txtPublisher.setText("");
-        txtPublishDate.setText("");
+        txtPublishDate.setCalendar(null);
         txtDescription.setText("");
         txtQty.setText("");
         txtCatgoryType.setText("");

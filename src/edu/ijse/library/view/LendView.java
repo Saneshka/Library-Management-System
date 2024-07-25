@@ -10,7 +10,9 @@ import edu.ijse.library.controller.MemberController;
 import edu.ijse.library.dto.BookDTO;
 import edu.ijse.library.dto.LendDTO;
 import edu.ijse.library.dto.MemberDTO;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -57,9 +59,7 @@ public class LendView extends javax.swing.JFrame {
         lblLendCode = new javax.swing.JLabel();
         txtLendCode = new javax.swing.JTextField();
         lblBorrowDate = new javax.swing.JLabel();
-        txtBorrowDate = new javax.swing.JTextField();
         lblDueDate = new javax.swing.JLabel();
-        txtDueDate = new javax.swing.JTextField();
         btnLendBooks = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLend = new javax.swing.JTable();
@@ -78,6 +78,8 @@ public class LendView extends javax.swing.JFrame {
         jSeparator9 = new javax.swing.JSeparator();
         btnFineManagement = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        txtBorrowDate = new com.toedter.calendar.JDateChooser();
+        txtDueDate = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -135,20 +137,8 @@ public class LendView extends javax.swing.JFrame {
         lblBorrowDate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblBorrowDate.setText("Borrow Date");
 
-        txtBorrowDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBorrowDateActionPerformed(evt);
-            }
-        });
-
         lblDueDate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDueDate.setText("Due Date");
-
-        txtDueDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDueDateActionPerformed(evt);
-            }
-        });
 
         btnLendBooks.setText("Lend Book");
         btnLendBooks.addActionListener(new java.awt.event.ActionListener() {
@@ -301,6 +291,10 @@ public class LendView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        txtBorrowDate.setDateFormatString("yyyy-MM-dd");
+
+        txtDueDate.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -322,17 +316,17 @@ public class LendView extends javax.swing.JFrame {
                                             .addComponent(txtLendCode, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblBookCode, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtBookCode, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
                                                 .addComponent(lblMemberCode, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtMemberCode, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblBorrowDate, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtBorrowDate, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(txtMemberCode, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(lblBookCode, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(lblBorrowDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txtBorrowDate, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtBookCode, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(btnBookSearch)
@@ -345,10 +339,10 @@ public class LendView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnLendBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55))))
+                        .addGap(52, 52, 52))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -371,15 +365,16 @@ public class LendView extends javax.swing.JFrame {
                     .addComponent(txtBookCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBookSearch)
                     .addComponent(lblBookData))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblBorrowDate)
                     .addComponent(txtBorrowDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDueDate)
-                    .addComponent(txtDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLendBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblDueDate)
+                        .addComponent(btnLendBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
@@ -410,14 +405,6 @@ public class LendView extends javax.swing.JFrame {
     private void txtLendCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLendCodeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLendCodeActionPerformed
-
-    private void txtBorrowDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBorrowDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBorrowDateActionPerformed
-
-    private void txtDueDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDueDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDueDateActionPerformed
 
     private void btnLendBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLendBooksActionPerformed
         // TODO add your handling code here:
@@ -531,8 +518,8 @@ public class LendView extends javax.swing.JFrame {
     private javax.swing.JLabel lblMemberData;
     private javax.swing.JTable tblLend;
     private javax.swing.JTextField txtBookCode;
-    private javax.swing.JTextField txtBorrowDate;
-    private javax.swing.JTextField txtDueDate;
+    private com.toedter.calendar.JDateChooser txtBorrowDate;
+    private com.toedter.calendar.JDateChooser txtDueDate;
     private javax.swing.JTextField txtLendCode;
     private javax.swing.JTextField txtMemberCode;
     // End of variables declaration//GEN-END:variables
@@ -570,20 +557,26 @@ public class LendView extends javax.swing.JFrame {
         txtLendCode.setText("");
         txtMemberCode.setText("");
         txtBookCode.setText("");
-        txtBorrowDate.setText("");
-        txtDueDate.setText("");
+        txtBorrowDate.setCalendar(null);
+        txtDueDate.setCalendar(null);
     }
 
     public void lendBook() {
         try {
             BookDTO bookDTO = bookController.get(txtBookCode.getText());
-            if (bookDTO.getQty()>0) {
+            if (bookDTO.getQty() > 0) {
                 MemberDTO memberDTO = memberController.get(txtMemberCode.getText());
-                LendDTO lendDTO = new LendDTO(txtLendCode.getText(), bookDTO.getBid(), memberDTO.getMid(), txtBorrowDate.getText(), txtDueDate.getText());
+                Date bDate = txtBorrowDate.getDate();
+                Date dDate = txtDueDate.getDate();
+                SimpleDateFormat formatdate = new SimpleDateFormat("yyyy-MM-dd");
+                String borrowDate = formatdate.format(bDate);
+                String dueDate = formatdate.format(dDate);
+                LendDTO lendDTO = new LendDTO(txtLendCode.getText(), bookDTO.getBid(), memberDTO.getMid(), borrowDate, dueDate);
                 String resp = lendController.lendBook(lendDTO);
                 JOptionPane.showMessageDialog(this, resp);
-                loadTable();    
-            }else{
+                loadTable();
+                clearForm();
+            } else {
                 JOptionPane.showMessageDialog(this, "Not enough stock in this book");
             }
         } catch (Exception e) {

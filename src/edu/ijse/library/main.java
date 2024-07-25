@@ -21,9 +21,9 @@ public class main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new LoginView().setVisible(true);
+//        new LoginView().setVisible(true);
 //        new FineView().setVisible(true);
-//        new LendView().setVisible(true);
+        new LendView().setVisible(true);
 //        new ReturnView().setVisible(true);
 //        new BookView().setVisible(true);
     }
