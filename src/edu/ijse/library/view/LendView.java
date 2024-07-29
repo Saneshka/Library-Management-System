@@ -413,44 +413,44 @@ public class LendView extends javax.swing.JFrame {
 
     private void btnMemberManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMemberManagementActionPerformed
         // TODO add your handling code here:
-        new MemberView().setVisible(true);
         this.setVisible(false);
+        new MemberView().setVisible(true);
     }//GEN-LAST:event_btnMemberManagementActionPerformed
 
     private void btnUserManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserManagementActionPerformed
         // TODO add your handling code here:
-        new UserView().setVisible(true);
         this.setVisible(false);
+        new UserView().setVisible(true);
     }//GEN-LAST:event_btnUserManagementActionPerformed
 
     private void btnBookLendManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookLendManagementActionPerformed
         // TODO add your handling code here:
-        new LendView().setVisible(true);
         this.setVisible(false);
+        new LendView().setVisible(true);
     }//GEN-LAST:event_btnBookLendManagementActionPerformed
 
     private void btnCategoryManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoryManagementActionPerformed
         // TODO add your handling code here:
-        new CategoryView().setVisible(true);
         this.setVisible(false);
+        new CategoryView().setVisible(true);
     }//GEN-LAST:event_btnCategoryManagementActionPerformed
 
     private void btnBookManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookManagementActionPerformed
         // TODO add your handling code here:
-        new BookView().setVisible(true);
         this.setVisible(false);
+        new BookView().setVisible(true);
     }//GEN-LAST:event_btnBookManagementActionPerformed
 
     private void btnBookReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookReturnActionPerformed
         // TODO add your handling code here:
-        new ReturnView().setVisible(true);
         this.setVisible(false);
+        new ReturnView().setVisible(true);
     }//GEN-LAST:event_btnBookReturnActionPerformed
 
     private void btnFineManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFineManagementActionPerformed
         // TODO add your handling code here:
-        new FineView().setVisible(true);
         this.setVisible(false);
+        new FineView().setVisible(true);
     }//GEN-LAST:event_btnFineManagementActionPerformed
 
     /**

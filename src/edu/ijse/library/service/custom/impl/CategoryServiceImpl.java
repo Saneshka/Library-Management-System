@@ -15,8 +15,8 @@ import java.util.ArrayList;
  *
  * @author hirus
  */
-public class CategoryServiceImpl implements CategoryService{
-    
+public class CategoryServiceImpl implements CategoryService {
+
     private CategoryDao dao = (CategoryDao) DaoFactory.getInstance().getDao(DaoFactory.daoTypes.CATEGORY);
 
     @Override
@@ -44,15 +44,22 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
+    public CategoryDTO getById(int id) throws Exception {
+        CategoryEntity entity = dao.getById(id);
+        CategoryDTO dto = new CategoryDTO(entity.getCid(), entity.getcCode(), entity.getCategoryName(), entity.getDescription());
+        return dto;
+    }
+
+    @Override
     public ArrayList<CategoryDTO> getAll() throws Exception {
         ArrayList<CategoryEntity> entityList = dao.getAll();
         ArrayList<CategoryDTO> dtoList = new ArrayList<>();
-        
-        for(CategoryEntity entity : entityList){
-            CategoryDTO dto = new CategoryDTO(entity.getCid(), entity.getcCode(), entity.getCategoryName(),entity.getDescription());
+
+        for (CategoryEntity entity : entityList) {
+            CategoryDTO dto = new CategoryDTO(entity.getCid(), entity.getcCode(), entity.getCategoryName(), entity.getDescription());
             dtoList.add(dto);
         }
         return dtoList;
     }
-    
+
 }

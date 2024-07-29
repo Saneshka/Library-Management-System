@@ -18,6 +18,7 @@ public interface CategoryDao extends SuperDAO{
     String update(CategoryEntity entity) throws Exception;
     String delete(String code) throws Exception;
     CategoryEntity get(String code) throws Exception;
+    CategoryEntity getById(int id) throws Exception;
     ArrayList<CategoryEntity> getAll() throws Exception;
     
 }

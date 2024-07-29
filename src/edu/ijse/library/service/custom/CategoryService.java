@@ -18,5 +18,6 @@ public interface CategoryService extends SuperService{
     String update(CategoryDTO dto) throws Exception;
     String delete(String code) throws Exception;
     CategoryDTO get(String code) throws Exception;
+    CategoryDTO getById(int id) throws Exception;
     ArrayList<CategoryDTO> getAll() throws Exception;
 }

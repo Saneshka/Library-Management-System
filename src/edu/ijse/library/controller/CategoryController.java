@@ -29,6 +29,9 @@ public class CategoryController {
     public CategoryDTO get(String code) throws Exception{
         return categoryService.get(code);
     }
+    public CategoryDTO getById(int id) throws Exception{
+        return categoryService.getById(id);
+    }
     public ArrayList<CategoryDTO> getAll() throws Exception{
         return categoryService.getAll();
     }

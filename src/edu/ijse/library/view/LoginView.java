@@ -197,8 +197,8 @@ public class LoginView extends javax.swing.JFrame {
             String resp = USER_CONTROLLER.login(dto);
             JOptionPane.showMessageDialog(this, resp);
             if (resp.equals("Success")) {
-                new MemberView().setVisible(true);
                 this.setVisible(false);
+                new MemberView().setVisible(true);
             }
             Clear();
         } catch (Exception e) {

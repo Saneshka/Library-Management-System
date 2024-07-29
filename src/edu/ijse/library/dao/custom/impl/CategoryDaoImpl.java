@@ -56,4 +56,16 @@ public class CategoryDaoImpl implements CategoryDao{
         }
         return categoryEntities;
     }
+
+    @Override
+    public CategoryEntity getById(int id) throws Exception {
+        ResultSet rest = CrudUtil.executeQuary("SELECT * FROM category WHERE cid = ?", id);
+        if (rest.next()) {
+            CategoryEntity entity = new CategoryEntity(rest.getInt("cid"), rest.getString("cCode"), rest.getString("categoryName"), rest.getString("description"));
+            return entity;
+        }
+        return null;
+    }
+
+
 }
