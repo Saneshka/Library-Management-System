@@ -483,23 +483,32 @@ public class ReturnView extends javax.swing.JFrame {
             if (fine > 0) {
                 System.out.println("Have Fine");
                 LendDTO respDTO = lendController.get(txtLendCode.getText());
-                LendDTO dto = new LendDTO();
-                dto.setLid(respDTO.getLid());
-                System.out.println("LId : "+ respDTO.getLid());
-                dto.setlCode(txtLendCode.getText());
-                dto.setReturnDate(currentDate.toString());
-                dto.setFine(fine);
-                dto.setBookId(respDTO.getBookId());
-                String resp = lendController.lateReturnBook(dto);
-                JOptionPane.showMessageDialog(this, resp);
+                if (respDTO.getReturnDate() == null) {
+                    LendDTO dto = new LendDTO();
+                    dto.setLid(respDTO.getLid());
+                    System.out.println("LId : " + respDTO.getLid());
+                    dto.setlCode(txtLendCode.getText());
+                    dto.setReturnDate(currentDate.toString());
+                    dto.setFine(fine);
+                    dto.setBookId(respDTO.getBookId());
+                    String resp = lendController.lateReturnBook(dto);
+                    JOptionPane.showMessageDialog(this, resp); 
+                }else{
+                    JOptionPane.showMessageDialog(this, "Book is Already Returned");
+                }
                 
             }else{
                 LendDTO respDto = lendController.get(txtLendCode.getText());
-                LendDTO dto = new LendDTO(txtLendCode.getText(), currentDate.toString(), 0.0);
-                dto.setBookId(respDto.getBookId());
-                String resp = lendController.onTimeReturnBook(dto);
-                JOptionPane.showMessageDialog(this, resp);
-                System.out.println("No Fine | "+ resp);
+                if (respDto.getReturnDate() == null) {
+                    LendDTO dto = new LendDTO(txtLendCode.getText(), currentDate.toString(), 0.0);
+                    dto.setBookId(respDto.getBookId());
+                    String resp = lendController.onTimeReturnBook(dto);
+                    JOptionPane.showMessageDialog(this, resp);
+                    System.out.println("No Fine | " + resp);
+                    
+                }else{
+                    JOptionPane.showMessageDialog(this, "Book is Already Returned");
+                }
             }
             System.out.println("Fine : " + fine);
         } catch (Exception e) {

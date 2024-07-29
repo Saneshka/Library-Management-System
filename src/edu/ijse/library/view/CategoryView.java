@@ -369,24 +369,24 @@ public class CategoryView extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        searchMember();
+        searchCategory();
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        saveMember();
+        saveCategory();
         loadTable();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        updateMember();
+        updateCategory();
         loadTable();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        deleteMember();
+        deleteCategory();
         loadTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -506,35 +506,41 @@ public class CategoryView extends javax.swing.JFrame {
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 
-    public void  saveMember(){
+    public void  saveCategory(){
         try {
             CategoryDTO dto = new CategoryDTO(txtCategoryCode.getText(), txtName.getText(), txtDescription.getText());
             String resp = CATEGORY_CONTROLLER.save(dto);
             JOptionPane.showMessageDialog(this, resp);
+            clearForm();
+            loadTable();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
     
-    public void updateMember(){
+    public void updateCategory(){
         try {
             CategoryDTO dto = new CategoryDTO(txtCategoryCode.getText(), txtName.getText(), txtDescription.getText());
             String resp = CATEGORY_CONTROLLER.update(dto);
             JOptionPane.showMessageDialog(this, resp);
+            clearForm();
+            loadTable();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
-    public void deleteMember(){
+    public void deleteCategory(){
         try {
             String code = txtCategoryCode.getText();
             String resp = CATEGORY_CONTROLLER.delete(code);
             JOptionPane.showMessageDialog(this, resp);
+            clearForm();
+            loadTable();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
-    public void searchMember(){
+    public void searchCategory(){
         try {
             String code = txtCategoryCode.getText();
             CategoryDTO dto = CATEGORY_CONTROLLER.get(code);

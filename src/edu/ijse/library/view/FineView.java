@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author hirus
  */
 public class FineView extends javax.swing.JFrame {
-    
+
     private LendController lendController;
 
     /**
@@ -320,35 +320,35 @@ public class FineView extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         new MemberView().setVisible(true);
-  
+
     }//GEN-LAST:event_btnMemberManagementActionPerformed
 
     private void btnUserManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserManagementActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         new UserView().setVisible(true);
- 
+
     }//GEN-LAST:event_btnUserManagementActionPerformed
 
     private void btnBookLendManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookLendManagementActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         new LendView().setVisible(true);
-       
+
     }//GEN-LAST:event_btnBookLendManagementActionPerformed
 
     private void btnCategoryManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoryManagementActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         new CategoryView().setVisible(true);
-     
+
     }//GEN-LAST:event_btnCategoryManagementActionPerformed
 
     private void btnBookManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookManagementActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         new BookView().setVisible(true);
- 
+
     }//GEN-LAST:event_btnBookManagementActionPerformed
 
     private void btnBookReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookReturnActionPerformed
@@ -425,7 +425,7 @@ public class FineView extends javax.swing.JFrame {
     private javax.swing.JTextField txtLendCode;
     // End of variables declaration//GEN-END:variables
 
-    public void searchLendDetails(){
+    public void searchLendDetails() {
         try {
             String lCOde = txtLendCode.getText();
             LendDTO dto = lendController.get(lCOde);
@@ -435,12 +435,17 @@ public class FineView extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
-    public void payFine(){
+
+    public void payFine() {
         try {
             String lCode = txtLendCode.getText();
             LendDTO dto = lendController.get(lCode);
-            String resp = lendController.payFine(dto.getLid());
-            JOptionPane.showMessageDialog(this, resp);
+            if (dto.getFine() == 0.0) {
+                JOptionPane.showMessageDialog(this, "There are no fines to be paid ");
+            } else {
+                String resp = lendController.payFine(dto.getLid());
+                JOptionPane.showMessageDialog(this, resp);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
