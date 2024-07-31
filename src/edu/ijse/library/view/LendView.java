@@ -105,6 +105,7 @@ public class LendView extends javax.swing.JFrame {
             }
         });
 
+        btnBookSearch.setBackground(new java.awt.Color(102, 255, 0));
         btnBookSearch.setText("Search");
         btnBookSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +113,7 @@ public class LendView extends javax.swing.JFrame {
             }
         });
 
+        btnMemberSearch.setBackground(new java.awt.Color(102, 255, 0));
         btnMemberSearch.setText("Search");
         btnMemberSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +142,7 @@ public class LendView extends javax.swing.JFrame {
         lblDueDate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDueDate.setText("Due Date");
 
+        btnLendBooks.setBackground(new java.awt.Color(102, 255, 0));
         btnLendBooks.setText("Lend Book");
         btnLendBooks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

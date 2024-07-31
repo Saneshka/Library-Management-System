@@ -106,6 +106,7 @@ public class ReturnView extends javax.swing.JFrame {
             }
         });
 
+        btnSearch.setBackground(new java.awt.Color(102, 255, 0));
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +123,7 @@ public class ReturnView extends javax.swing.JFrame {
             }
         });
 
+        btnReturnBook.setBackground(new java.awt.Color(102, 255, 0));
         btnReturnBook.setText("Return Book");
         btnReturnBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -511,7 +513,14 @@ public class ReturnView extends javax.swing.JFrame {
                 }
             }
             System.out.println("Fine : " + fine);
+            clearForm();
         } catch (Exception e) {
         }
+    }
+    public void clearForm(){
+        txtLendCode.setText("");
+        txtBookName.setText("");
+        txtMemberName.setText("");
+        txtDueDate.setText("");
     }
 }

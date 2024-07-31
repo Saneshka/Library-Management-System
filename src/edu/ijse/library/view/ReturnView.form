@@ -152,6 +152,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnSearch">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="ff" red="66" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
       <Events>
@@ -173,6 +176,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnReturnBook">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="ff" red="66" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Return Book"/>
       </Properties>
       <Events>

@@ -81,6 +81,7 @@ public class FineView extends javax.swing.JFrame {
             }
         });
 
+        btnSearch.setBackground(new java.awt.Color(102, 255, 0));
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +89,7 @@ public class FineView extends javax.swing.JFrame {
             }
         });
 
+        btnPay.setBackground(new java.awt.Color(102, 255, 0));
         btnPay.setText("Pay");
         btnPay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +97,7 @@ public class FineView extends javax.swing.JFrame {
             }
         });
 
+        btnClear.setBackground(new java.awt.Color(102, 255, 0));
         btnClear.setText("Clear");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -313,7 +316,7 @@ public class FineView extends javax.swing.JFrame {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
-//        clearForm();
+        clearForm();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnMemberManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMemberManagementActionPerformed
@@ -446,9 +449,15 @@ public class FineView extends javax.swing.JFrame {
                 String resp = lendController.payFine(dto.getLid());
                 JOptionPane.showMessageDialog(this, resp);
             }
+            clearForm();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+    }
+    
+    public void clearForm(){
+        txtLendCode.setText("");
+        txtFineAmount.setText("");
     }
 
 }

@@ -128,6 +128,7 @@ public class MemberView extends javax.swing.JFrame {
             }
         });
 
+        btnSave.setBackground(new java.awt.Color(102, 255, 0));
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +136,7 @@ public class MemberView extends javax.swing.JFrame {
             }
         });
 
+        btnUpdate.setBackground(new java.awt.Color(102, 255, 0));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +144,7 @@ public class MemberView extends javax.swing.JFrame {
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(102, 255, 0));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +152,7 @@ public class MemberView extends javax.swing.JFrame {
             }
         });
 
+        btnClear.setBackground(new java.awt.Color(102, 255, 0));
         btnClear.setText("Clear");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,6 +182,7 @@ public class MemberView extends javax.swing.JFrame {
             }
         });
 
+        btnSearch.setBackground(new java.awt.Color(102, 255, 0));
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
